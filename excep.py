@@ -1,6 +1,3 @@
-from multiprocessing.sharedctypes import Value
-
-
 def get_value():
     value = input('Enter number here:')
     try:

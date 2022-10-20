@@ -15,7 +15,7 @@ def menu():
         print('\n Main menu')
         print('1.If you want to work with rational numbers enter "1":')
         print('2.If you want to work with complex numbers enter "2":')
-        print('Enter 0 to return:')
+        print('Enter 0 to exit:')
         try:
             choice_1 = int(input("Choose model:"))
         except ValueError:
@@ -55,7 +55,7 @@ def menu():
                 log.sub_log(number_1, number_2, result)
                 print(result)
                 return result
-            elif choice_2==3:
+            elif choice_2 == 3:
                 print('\n Devision of numbers')
                 print('1. Standart devision " / "')
                 print('2. integer devision " // "')
@@ -67,7 +67,7 @@ def menu():
                     print('There is no such operation, please try again :(')
                     log.pop_error_log()
                     return menu()
-                if choice_3 ==1:
+                if choice_3 == 1:
                     number_1 = ex.get_value()
                     number_2 = ex.get_value()
                     div.init(number_1, number_2)
@@ -80,8 +80,8 @@ def menu():
                         print('You can not devide to "0"')
                         log.pop_error_log
                         return menu()
-                
-                elif choice_3 ==2:
+
+                elif choice_3 == 2:
                     number_1 = ex.get_value()
                     number_2 = ex.get_value()
                     div.init(number_1, number_2)
@@ -93,9 +93,9 @@ def menu():
                     except ZeroDivisionError:
                         print('You can not devide to "0"')
                         log.pop_error_log
-                        return menu()    
-                
-                elif choice_3 ==3:
+                        return menu()
+
+                elif choice_3 == 3:
                     number_1 = ex.get_value()
                     number_2 = ex.get_value()
                     div.init(number_1, number_2)
@@ -107,11 +107,11 @@ def menu():
                     except ZeroDivisionError:
                         print('You can not devide to "0"')
                         log.pop_error_log
-                        return menu() 
-                elif choice_3==0:
+                        return menu()
+                elif choice_3 == 0:
                     return menu()
-                
-            elif choice_2 ==4:
+
+            elif choice_2 == 4:
                 number_1 = ex.get_value()
                 number_2 = ex.get_value()
                 mult.init(number_1, number_2)
@@ -119,8 +119,8 @@ def menu():
                 log.mult_log(number_1, number_2, result)
                 print(result)
                 return result
-                
-            elif choice_2 ==5:
+
+            elif choice_2 == 5:
                 number_1 = ex.get_value()
                 number_2 = ex.get_value()
                 pow.init(number_1, number_2)
@@ -129,21 +129,21 @@ def menu():
                 print(result)
                 return result
 
-            elif choice_2 ==6:
-                number_1=ex.get_value()
-                result = sqr.do_it(number_1)
-                log.sqt_log(number_1,result)
+            elif choice_2 == 6:
+                number_1 = ex.get_value()
+                result = sqr.dot_it_2(number_1)
+                log.sqt_log(number_1, result)
                 print(result)
                 return result
-                
-            elif choice_2==0:
+
+            elif choice_2 == 0:
                 return menu()
             else:
                 print('Something went wrong, please try again :(')
                 log.pop_error_log()
                 menu()
 
-        if choice_1==2:
+        if choice_1 == 2:
             print("\nComplex numbers")
             print('1.Addition of numbers')
             print('2.Substration of numbers')
@@ -153,26 +153,78 @@ def menu():
             print('6.sqrt')
             print('0.Return to main menu')
             try:
-                choice_2 = int(input("Выберете операцию: "))
+                choice_2 = int(input("Choose the operation: "))
             except ValueError:
                 print('That is not integer, please try again :(')
                 log.pop_error_log
                 return menu()
-                    
-            if choice_2 ==1:
+
+            if choice_2 == 1:
                 complex_number_1 = cx.create_complex()
                 complex_number_2 = cx.create_complex()
-                sum.init(complex_number_1,complex_number_2)
+                sum.init(complex_number_1, complex_number_2)
                 result = sum.do_it()
-                log.sum_log(complex_number_1,complex_number_2,result)
+                log.sum_log(complex_number_1, complex_number_2, result)
                 print(result)
                 return result
 
-            elif choice_2==2:
+            elif choice_2 == 2:
                 complex_number_1 = cx.create_complex()
                 complex_number_2 = cx.create_complex()
-                sub.init(complex_number_1,complex_number_2)
+                sub.init(complex_number_1, complex_number_2)
                 result = sub.do_it()
-                log.sub_log(complex_number_1,complex_number_2,result)
+                log.sub_log(complex_number_1, complex_number_2, result)
                 print(result)
                 return result
+
+            elif choice_2 == 3:
+                complex_number_1 = cx.create_complex()
+                complex_number_2 = cx.create_complex()
+                div.init(complex_number_1, complex_number_2)
+                try:
+                    result = div.do_it()
+                    log.div_log(complex_number_1, complex_number_2, result)
+                    print(result)
+                    return result
+                except ZeroDivisionError:
+                    print('You can not devide to "0"')
+                    log.pop_error_log()
+                    return menu()
+
+            elif choice_2 == 4:
+                complex_number_1 = cx.create_complex()
+                complex_number_2 = cx.create_complex()
+                mult.init(complex_number_1,complex_number_2)
+                result = mult.do_it()
+                log.mult_log(complex_number_1,complex_number_2,result)
+                print(result)
+                return result
+            elif choice_2==5:
+                complex_number_1 = cx.create_complex()
+                complex_number_2 = cx.create_complex()
+                pow.init(complex_number_1, complex_number_2)
+                result = pow.do_it()
+                log.pow_log(complex_number_1, complex_number_2, result)
+                print(result)
+                return result
+            
+            elif choice_2==6:
+                complex_number_1 = cx.create_complex()
+                result = sqr.do_it(complex_number_1)
+                log.sqt_log(complex_number_1,result)
+                print(result)
+                return result
+
+            elif choice_2==0:
+                return menu()
+            
+            else:
+                print("Something went wrong, try again:(")
+                log.pop_error_log()
+                return menu()
+            
+        if choice_1==0:
+            print('Good bye!')
+            quit()
+menu()
+
